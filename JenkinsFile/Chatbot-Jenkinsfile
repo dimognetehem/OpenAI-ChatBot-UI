@@ -35,17 +35,21 @@ pipeline{
         }
         stage('Owasp Dependency Check') {
             steps {
-                // Ajout du format de sortie et du chemin de sortie
                 dependencyCheck additionalArguments: '''
-                    --scan ./ 
+                    --scan ./package.json ./package-lock.json ./node_modules
                     --format "ALL" 
-                    --disableYarnAudit 
-                    --disableNodeAudit 
+                    --project "ChatBot-UI" 
+                    --failOnCVSS 7
+                    --suppressionFile ./suppressions.xml
                     --out ./reports
                 ''', odcInstallation: 'DP-Check'
                 
-                // Spécifier le chemin exact du rapport
                 dependencyCheckPublisher pattern: 'reports/dependency-check-report.xml'
+            }
+            post {
+                always {
+                    archiveArtifacts artifacts: 'reports/*', fingerprint: true
+                }
             }
         }
         stage('Trivy Fs Scan') {
