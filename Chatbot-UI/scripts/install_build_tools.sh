@@ -26,44 +26,11 @@ sudo apt install -y openjdk-17-jdk jenkins
 sudo systemctl daemon-reload
 sudo systemctl enable jenkins
 sudo systemctl start jenkins
-sudo systemctl status jenkins
+
 
 # Installing Git
 sudo apt install -y git
 git --version
-
-# Installing Docker
-# Ref - https://docs.docker.com/engine/install/ubuntu/
-sudo apt-get remove docker docker-engine docker.io containerd runc
-sudo apt-get update
-sudo apt-get install -y \
-    ca-certificates \
-    curl \
-    gnupg
-
-sudo install -m 0755 -d /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-sudo chmod a+r /etc/apt/keyrings/docker.gpg
-
-echo \
-  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-
-sudo apt-get update
-sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-
-# Configure Docker permissions
-sudo usermod -aG docker ubuntu
-sudo usermod -aG docker jenkins
-sudo systemctl enable docker.service
-sudo systemctl start docker.service
-sudo systemctl status docker.service
-
-sudo chmod 777 /var/run/docker.sock
-
-# Run Docker Container of Sonarqube
-docker run -d --name sonar -p 9000:9000 sonarqube:lts-community
 
 # Installing AWS CLI
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
@@ -97,3 +64,34 @@ curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
 sudo apt-get update
 sudo apt-get install -y helm
+
+# Installing Docker
+# Ref - https://docs.docker.com/engine/install/ubuntu/
+# Add Docker's official GPG key:
+sudo apt-get update
+sudo apt-get install -y ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+# Add the repository to Apt sources:
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+# Configure Docker permissions
+sudo usermod -aG docker ubuntu
+sudo usermod -aG docker jenkins
+
+sudo systemctl daemon-reload
+sudo systemctl enable docker.service
+sudo systemctl start docker.service
+
+sudo chmod 777 /var/run/docker.sock
+
+# Run Docker Container of Sonarqube
+docker run -d --name sonar -p 9000:9000 sonarqube:lts-community
