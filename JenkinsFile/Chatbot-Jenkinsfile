@@ -18,7 +18,7 @@ pipeline{
                 sh "npm install"
             }
         }
-        stage("Sonarqube Analysis "){
+        stage("Sonarqube Analysis"){
             steps{
                 withSonarQubeEnv('sonar-server') {
                     sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Chatbot \
@@ -26,20 +26,29 @@ pipeline{
                 }
             }
         }
-        stage("quality gate"){
+        stage("Quality Gate"){
            steps {
                 script {
                     waitForQualityGate abortPipeline: false, credentialsId: 'Sonar-token' 
                 }
             } 
         }
-        stage('OWASP FS SCAN') {
+        stage('Owasp Dependency Check') {
             steps {
-                dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'DP-Check'
-                dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+                // Ajout du format de sortie et du chemin de sortie
+                dependencyCheck additionalArguments: '''
+                    --scan ./ 
+                    --format "ALL" 
+                    --disableYarnAudit 
+                    --disableNodeAudit 
+                    --out ./reports
+                ''', odcInstallation: 'DP-Check'
+                
+                // Spécifier le chemin exact du rapport
+                dependencyCheckPublisher pattern: 'reports/dependency-check-report.xml'
             }
         }
-        stage('TRIVY FS SCAN') {
+        stage('Trivy Fs Scan') {
             steps {
                 sh "trivy fs . > trivyfs.json"
             }
@@ -55,12 +64,12 @@ pipeline{
                 }
             }
         }
-        stage("TRIVY"){
+        stage("Trivy Image Scan"){
             steps{
                 sh "trivy image dimognetehem/chatbot:latest > trivy.json" 
             }
         }
-        stage ("Remove container") {
+        stage ("Remove Container") {
             steps{
                 sh "docker stop chatbot | true"
                 sh "docker rm chatbot | true"
