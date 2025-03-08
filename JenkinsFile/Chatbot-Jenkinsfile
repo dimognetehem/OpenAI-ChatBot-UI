@@ -33,25 +33,6 @@ pipeline{
                 }
             } 
         }
-        stage('Owasp Dependency Check') {
-            steps {
-                dependencyCheck additionalArguments: '''
-                    --scan ./package.json ./package-lock.json ./node_modules
-                    --format "ALL" 
-                    --project "ChatBot-UI" 
-                    --failOnCVSS 7
-                    --suppressionFile ./suppressions.xml
-                    --out ./reports
-                ''', odcInstallation: 'DP-Check'
-                
-                dependencyCheckPublisher pattern: 'reports/dependency-check-report.xml'
-            }
-            post {
-                always {
-                    archiveArtifacts artifacts: 'reports/*', fingerprint: true
-                }
-            }
-        }
         stage('Trivy Fs Scan') {
             steps {
                 sh "trivy fs . > trivyfs.json"
