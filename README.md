@@ -1,25 +1,14 @@
 # DevSecOps: OpenAI Chatbot UI Deployment in EKS with Jenkins and Terraform
-## Project Architecture :
+## 🏗️ Project Architecture :
 
 ![alt text](https://github.com/dimognetehem/OpenAI-ChatBot-UI/blob/main/DevSecOps-OpenAI-Chatbot-Architecture.png?raw=true)
+
+---
 
 ## 📋 Project Overview
 
 A modern ChatBot UI application deployed using a comprehensive DevSecOps pipeline. This project demonstrates the implementation of security-first CI/CD practices, infrastructure as code, and cloud-native technologies.
-
-## 🏗️ Architecture
-
-### Infrastructure Components
-- **AWS Cloud Infrastructure** managed and provisioned with Terraform
-- **Jenkins Server** running on EC2 (Ubuntu 22.04 LTS - t2.xlarge instance type)
-- **Docker** containerization
-- **Kubernetes** for container orchestration
-- **AWS EKS** for managed Kubernetes service
-
-### Security Tools Integration
-- **SonarQube** for code quality and security analysis
-- **OWASP Dependency Check** for dependency vulnerability scanning
-- **Trivy** for container and filesystem security scanning
+This ChatBot App hadn't been develop by me, just check this repo to find the author : [Chatbot-UI](https://github.com/mckaywrigley/chatbot-ui)
 
 ## 🔒 Security Features
 
@@ -32,99 +21,72 @@ A modern ChatBot UI application deployed using a comprehensive DevSecOps pipelin
 
 ## 🛠️ Technology Stack
 
-### Infrastructure & Cloud
-- AWS (EC2, VPC, EKS)
-- Terraform
-- Docker
-- Kubernetes
+> Tools, languages, and other things that I like to work with.
 
-### CI/CD & DevSecOps
-- Jenkins
-- SonarQube
-- Trivy
-- OWASP Dependency Check
+<table>
+  <tr>
+    <td align="center" width="96">
+      <a href="#macropower-tech">
+        <img src="./img/go-flat.svg" width="48" height="48" alt="Golang" />
+      </a>
+      <br>Go
+    </td>
+    <td align="center" width="96">
+      <a href="#macropower-tech">
+        <img src="./img/python-original.svg" width="48" height="48" alt="Python" />
+      </a>
+      <br>Python
+    </td>
+    <td align="center" width="96">
+      <a href="#macropower-tech">
+        <img src="https://jsonnet.org/img/isologo.svg" width="48" height="48" alt="Jsonnet" />
+      </a>
+      <br>Jsonnet
+    </td>
+    <td align="center" width="96">
+      <a href="#macropower-tech">
+        <img src="./img/typescript-original.svg" width="48" height="48" alt="TypeScript" />
+      </a>
+      <br>TypeScript
+    </td>
+    <td align="center" width="96">
+      <a href="#macropower-tech" >
+        <img src="https://raw.githubusercontent.com/cncf/artwork/master/projects/kubernetes/icon/color/kubernetes-icon-color.svg" width="48" height="48" alt="Kubernetes" />
+      </a>
+      <br>Kubernetes
+    </td>
+    <td align="center" width="96"> 
+      <a href="#macropower-tech" >
+        <img src="./img/docker-original.svg" width="48" height="48" alt="Docker" />
+      </a>
+      <br>Docker
+    </td>
+    <td align="center"  width="96">
+      <a href="#macropower-tech">
+        <img src="./img/debian-original.svg" width="48" height="48" alt="Debian" />
+      </a>
+      <br>Debian
+    </td>
+    <td align="center" width="96">
+      <a href="#macropower-tech" >
+        <img src="https://raw.githubusercontent.com/grafana/grafana/master/public/img/grafana_icon.svg" width="48" height="48" alt="Grafana" />
+      </a>
+      <br>Grafana
+    </td>
+  </tr>
+</table>
 
-### Application
-- Node.js
-- React
-- OpenAI API Integration
-
-## 📦 Pipeline Stages
-
-1. **Source Code Management**
-   - Git integration
-   - Branch management
-   - Code checkout
-
-2. **Security Scanning**
-   ```groovy
-   - SonarQube Analysis
-   - Quality Gates
-   - OWASP Dependency Check
-   - Trivy Filesystem Scan
-   ```
-
-3. **Containerization**
-   ```groovy
-   - Docker image build
-   - Security scan with Trivy
-   - Push to Docker Hub
-   ```
-
-4. **Deployment**
-   ```groovy
-   - Container deployment
-   - Kubernetes orchestration
-   - Health checks
-   ```
-
-## 🚀 Implementation Steps
-
-1. **Infrastructure Setup**
-   - VPC and Security Groups configuration
-   - EC2 instance provisioning
-   - Jenkins server setup
-
-2. **Tools Installation**
-   - Jenkins and required plugins
-   - Security scanning tools
-   - Docker and Kubernetes tools
-
-3. **Pipeline Configuration**
-   - Jenkinsfile creation
-   - Security scan integration
-   - Docker build and push setup
-
-4. **Kubernetes Deployment**
-   - EKS cluster setup
-   - Deployment configuration
-   - Service exposure
-
-## 💡 Key DevSecOps Practices Implemented
-
-- Infrastructure as Code (IaC)
-- Security as Code (SaC)
-- Continuous Security
-- Automated Vulnerability Scanning
-- Container Security
-- Compliance as Code
-
-## 🎯 Skills Demonstrated
-
-- Cloud Infrastructure Management
-- Security Tool Integration
-- CI/CD Pipeline Development
-- Container Orchestration
-- Infrastructure Automation
-- Security Best Practices
-- Cloud-Native Development
 
 ## 📝 Prerequisites
 
 - AWS Account
 - Docker Hub Account
-- Jenkins Server
-- Terraform installed
+- Jenkins installed on EC2 Instance Server
+- Java 17 installed
+- Docker installed
+- Git installed
+- Trivy installed
+- OWASP Depency Check installed
 - kubectl configured
 - AWS CLI configured
 
@@ -144,17 +106,38 @@ A modern ChatBot UI application deployed using a comprehensive DevSecOps pipelin
    
    ```bash
    terraform init
+   terraform validate
    ```
-![alt text](https://github.com/dimognetehem/OpenAI-ChatBot-UI/blob/images/main/initTerraform.png?raw=true)
+![alt text](https://github.com/dimognetehem/OpenAI-ChatBot-UI/blob/main/images/initTerraform.png?raw=true)
 
    ```bash
+   terraform plan
    terraform apply
    ```
+![alt text](https://github.com/dimognetehem/OpenAI-ChatBot-UI/blob/main/images/planTerraform.png?raw=true)
 
-3. Configure Jenkins
+
+3. Connecting to instance via SSH
+
+ - Already set a bash script in the EC2 instance's user data to install required tools (like Jenkins, Git, Java, Docker, etc.)
+
+![alt text](https://github.com/dimognetehem/OpenAI-ChatBot-UI/blob/main/images/instance-ssh.png?raw=true)
+
+4. Configure Jenkins
+
+![alt text](https://github.com/dimognetehem/OpenAI-ChatBot-UI/blob/main/images/initJenkins1.png?raw=true)
+
+![alt text](https://github.com/dimognetehem/OpenAI-ChatBot-UI/blob/main/images/initJenkins2.png?raw=true)
+
+![alt text](https://github.com/dimognetehem/OpenAI-ChatBot-UI/blob/main/images/initJenkins3.png?raw=true)
+
+![alt text](https://github.com/dimognetehem/OpenAI-ChatBot-UI/blob/main/images/initJenkins4.png?raw=true)
+
+![alt text](https://github.com/dimognetehem/OpenAI-ChatBot-UI/blob/main/images/initJenkins5.png?raw=true)
 
    - Install required plugins
-    Navigate to Manage Jenkins → Plugins → Available Plugins and install the following.
+    Navigate to Manage Jenkins → Plugins → Available Plugins and install the following :
+
 
     ```go
     1 → Eclipse Temurin Installer
@@ -187,15 +170,72 @@ A modern ChatBot UI application deployed using a comprehensive DevSecOps pipelin
 
     15 → Pipeline: AWS Steps
     ```
+    
+![alt text](https://github.com/dimognetehem/OpenAI-ChatBot-UI/blob/main/images/configJenkins1.png?raw=true)
 
+   - Set up pipeline
+
+![alt text](https://github.com/dimognetehem/OpenAI-ChatBot-UI/blob/main/images/configJenkins2.png?raw=true)
 
    - Configure credentials
-   - Set up pipeline
+
+![alt text](https://github.com/dimognetehem/OpenAI-ChatBot-UI/blob/main/images/configJenkins3.png?raw=true)
+
+5. Configure SonarQube
+
+   ```groovy
+   Default-Credentials
+   Username : admin
+   Password : admin
+   ```
+
+![alt text](https://github.com/dimognetehem/OpenAI-ChatBot-UI/blob/main/images/initSonar1.png?raw=true)
+
+![alt text](https://github.com/dimognetehem/OpenAI-ChatBot-UI/blob/main/images/initSonar2.png?raw=true)
+
+![alt text](https://github.com/dimognetehem/OpenAI-ChatBot-UI/blob/main/images/initSonar3.png?raw=true)
+
+![alt text](https://github.com/dimognetehem/OpenAI-ChatBot-UI/blob/main/images/configSonar1.png?raw=true)
+
+![alt text](https://github.com/dimognetehem/OpenAI-ChatBot-UI/blob/main/images/configSonar2.png?raw=true)
+
+![alt text](https://github.com/dimognetehem/OpenAI-ChatBot-UI/blob/main/images/configSonar3.png?raw=true)
+
+![alt text](https://github.com/dimognetehem/OpenAI-ChatBot-UI/blob/main/images/configSonar4.png?raw=true)
+
+6. Launching Pipeline Build
+
+   - Build Success !
+
+![alt text](https://github.com/dimognetehem/OpenAI-ChatBot-UI/blob/main/images/JenkinsPipelineSuccess.png?raw=true)
+
+
+7. SonarQube Scan Analysis
+
+   - Passed !
+
+![alt text](https://github.com/dimognetehem/OpenAI-ChatBot-UI/blob/main/images/SonarScanSuccess.png?raw=true)
+
+
+8. Chatbot-UI App Deployed !
+
+![alt text](https://github.com/dimognetehem/OpenAI-ChatBot-UI/blob/main/images/chatbot1.png?raw=true)
+
+9. Creating API Key on OpenAI
+
+![alt text](https://github.com/dimognetehem/OpenAI-ChatBot-UI/blob/main/images/configOpenAIKey.png?raw=true)
+
+10. Testing the app
+
+![alt text](https://github.com/dimognetehem/OpenAI-ChatBot-UI/blob/main/images/chatbot2.png?raw=true)
+
+
+It's Done !
 
 ## 📈 Future Improvements
 
 - [ ] Implement GitOps practices
-- [ ] Add monitoring and observability
+- [ ] Add monitoring and observability (Prometheus and Grafana)
 - [ ] Enhance security scanning
 - [ ] Implement auto-scaling
 - [ ] Add disaster recovery
@@ -210,11 +250,11 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 👤 Author
 
-- **Franck TEHEM**
-- Role: DevSecOps Engineer
+- **DIMOGNE TEHEM Emmanuel Franck**
+- Role: DevOps/Software Engineer
 - [GitHub](https://github.com/dimognetehem)
 
 ---
-*This project was developed as part of a DevSecOps portfolio demonstration, showcasing modern cloud-native security practices and automation.*
+*This project was developed as part of a DevOps portfolio demonstration, showcasing modern cloud-native security practices and automation.*
 
 
