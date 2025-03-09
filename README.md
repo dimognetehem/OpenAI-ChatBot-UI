@@ -3,30 +3,218 @@
 
 ![alt text](https://github.com/dimognetehem/OpenAI-ChatBot-UI/blob/main/DevSecOps-OpenAI-Chatbot-Architecture.png?raw=true)
 
-## **Introduction:**
+## 📋 Project Overview
 
-In today’s digital world, user engagement is key to the success of any application. Implementing DevSecOps practices is essential for ensuring security, reliability, and efficient deployment processes. In this project, we aim to implement DevSecOps for deploying an OpenAI Chatbot UI. We will use Kubernetes (EKS) for container orchestration, Jenkins for Continuous Integration/Continuous Deployment (CI/CD), and Docker for containerization.
+A modern ChatBot UI application deployed using a comprehensive DevSecOps pipeline. This project demonstrates the implementation of security-first CI/CD practices, infrastructure as code, and cloud-native technologies.
 
-**What is ChatBOT?**
+## 🏗️ Architecture
 
-ChatBOT is an AI-powered conversational agent trained on extensive human conversation data. It utilizes natural language processing techniques to understand user queries and provide human-like responses. By simulating natural language interactions, ChatBOT enhances user engagement and provides personalized assistance to users.
+### Infrastructure Components
+- **AWS Cloud Infrastructure** managed and provisioned with Terraform
+- **Jenkins Server** running on EC2 (Ubuntu 22.04 LTS - t2.xlarge instance type)
+- **Docker** containerization
+- **Kubernetes** for container orchestration
+- **AWS EKS** for managed Kubernetes service
 
-**Why ChatBOT?**
+### Security Tools Integration
+- **SonarQube** for code quality and security analysis
+- **OWASP Dependency Check** for dependency vulnerability scanning
+- **Trivy** for container and filesystem security scanning
 
-**1\. Personalized Interactions:** ChatBOT enables personalized interactions by understanding user queries and responding in a conversational manner, fostering engagement and satisfaction.  
-  
-**2\. 24/7 Availability:** Unlike human agents, ChatBOT is available 24/7, ensuring instant responses to user queries and delivering a seamless user experience round the clock.  
-  
-**3\. Scalability:** With ChatBOT deployed in our application, we can efficiently handle a large volume of user interactions, ensuring scalability as our user base expands.
+## 🔒 Security Features
 
-**How We’re Deploying ChatBOT?**
+- Infrastructure security with AWS Security Groups
+- Container security scanning with Trivy
+- Code quality gates with SonarQube
+- Dependency vulnerability checking
+- Secure Docker image management
+- Kubernetes security best practices
 
-**1\. Containerization with Docker:** We’re containerizing the ChatBOT application using Docker, which provides lightweight, portable, and isolated environments for running applications. Docker enables consistent deployment across different environments, simplifying the deployment process and ensuring consistency.
+## 🛠️ Technology Stack
 
-**2\. Orchestration with Kubernetes (EKS):** Kubernetes provides powerful orchestration capabilities for managing containerized applications at scale. We’re leveraging Amazon Elastic Kubernetes Service (EKS) to deploy and manage our Docker containers efficiently. EKS automates container deployment, scaling, and management, ensuring high availability and resilience.
+### Infrastructure & Cloud
+- AWS (EC2, VPC, EKS)
+- Terraform
+- Docker
+- Kubernetes
 
-**3\. CI/CD with Jenkins:** Jenkins serves as our CI/CD tool for automating the deployment pipeline. We’ve configured Jenkins to continuously integrate code changes, run automated tests, and deploy the ChatBOT application to EKS. By automating the deployment process, Jenkins accelerates the delivery of updates and enhancements, improving efficiency and reliability.
+### CI/CD & DevSecOps
+- Jenkins
+- SonarQube
+- Trivy
+- OWASP Dependency Check
 
-**4\. DevSecOps Practices:** Throughout the deployment pipeline, we’re integrating security practices into every stage to ensure the security of our ChatBOT application. This includes vulnerability scanning, code analysis, and security testing to identify and mitigate potential security threats early in the development lifecycle.
+### Application
+- Node.js
+- React
+- OpenAI API Integration
 
-By implementing DevSecOps practices and leveraging modern technologies like Kubernetes, Docker, and Jenkins, we’re ensuring the secure, scalable, and efficient deployment of ChatBOT, enhancing user engagement and satisfaction.
+## 📦 Pipeline Stages
+
+1. **Source Code Management**
+   - Git integration
+   - Branch management
+   - Code checkout
+
+2. **Security Scanning**
+   ```groovy
+   - SonarQube Analysis
+   - Quality Gates
+   - OWASP Dependency Check
+   - Trivy Filesystem Scan
+   ```
+
+3. **Containerization**
+   ```groovy
+   - Docker image build
+   - Security scan with Trivy
+   - Push to Docker Hub
+   ```
+
+4. **Deployment**
+   ```groovy
+   - Container deployment
+   - Kubernetes orchestration
+   - Health checks
+   ```
+
+## 🚀 Implementation Steps
+
+1. **Infrastructure Setup**
+   - VPC and Security Groups configuration
+   - EC2 instance provisioning
+   - Jenkins server setup
+
+2. **Tools Installation**
+   - Jenkins and required plugins
+   - Security scanning tools
+   - Docker and Kubernetes tools
+
+3. **Pipeline Configuration**
+   - Jenkinsfile creation
+   - Security scan integration
+   - Docker build and push setup
+
+4. **Kubernetes Deployment**
+   - EKS cluster setup
+   - Deployment configuration
+   - Service exposure
+
+## 💡 Key DevSecOps Practices Implemented
+
+- Infrastructure as Code (IaC)
+- Security as Code (SaC)
+- Continuous Security
+- Automated Vulnerability Scanning
+- Container Security
+- Compliance as Code
+
+## 🎯 Skills Demonstrated
+
+- Cloud Infrastructure Management
+- Security Tool Integration
+- CI/CD Pipeline Development
+- Container Orchestration
+- Infrastructure Automation
+- Security Best Practices
+- Cloud-Native Development
+
+## 📝 Prerequisites
+
+- AWS Account
+- Docker Hub Account
+- Jenkins Server
+- Terraform installed
+- kubectl configured
+- AWS CLI configured
+
+## 🔧 Setup Instructions
+
+1. Clone the repository
+
+   ```bash
+   git clone https://github.com/dimognetehem/OpenAI-ChatBot-UI.git
+   ```
+
+2. Deploy Infrastructure
+
+   ```bash
+   cd Jenkins-Server-TF
+   ```
+   
+   ```bash
+   terraform init
+   ```
+![alt text](https://github.com/dimognetehem/OpenAI-ChatBot-UI/blob/images/main/initTerraform.png?raw=true)
+
+   ```bash
+   terraform apply
+   ```
+
+3. Configure Jenkins
+
+   - Install required plugins
+    Navigate to Manage Jenkins → Plugins → Available Plugins and install the following.
+
+    ```go
+    1 → Eclipse Temurin Installer
+
+    2 → SonarQube Scanner
+
+    3 → NodeJs Plugin
+
+    4 → Docker
+
+    5 → Docker commons
+
+    6 → Docker pipeline
+
+    7 → Docker API
+
+    8 → Docker Build step
+
+    9 → Owasp Dependency Check
+
+    10 → Kubernetes
+
+    11 → Kubernetes CLI
+
+    12 → Kubernetes Client API
+
+    13 → Kubernetes Pipeline DevOps steps
+
+    14 → AWS Credentials
+
+    15 → Pipeline: AWS Steps
+    ```
+
+
+   - Configure credentials
+   - Set up pipeline
+
+## 📈 Future Improvements
+
+- [ ] Implement GitOps practices
+- [ ] Add monitoring and observability
+- [ ] Enhance security scanning
+- [ ] Implement auto-scaling
+- [ ] Add disaster recovery
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 👤 Author
+
+- **Franck TEHEM**
+- Role: DevSecOps Engineer
+- [GitHub](https://github.com/dimognetehem)
+
+---
+*This project was developed as part of a DevSecOps portfolio demonstration, showcasing modern cloud-native security practices and automation.*
+
+
