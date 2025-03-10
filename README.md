@@ -83,10 +83,11 @@ This ChatBot App hadn't been develop by me, just check this repo to find the aut
 - Docker Hub Account
 - Jenkins installed on EC2 Instance Server
 - Java 17 installed
+- Node.js 19 installed
 - Docker installed
 - Git installed
 - Trivy installed
-- OWASP Depency Check installed
+- OWASP Dependency Check installed
 - kubectl configured
 - AWS CLI configured
 
