@@ -1,4 +1,4 @@
-# DevSecOps: OpenAI Chatbot UI Deployment in EKS with Jenkins and Terraform
+# DevSecOps: OpenAI Chatbot-UI App Deployment in Amazon EKS with Jenkins and Terraform
 ## 🏗️ Project Architecture :
 
 ![alt text](https://github.com/dimognetehem/OpenAI-ChatBot-UI/blob/main/DevSecOps-OpenAI-Chatbot-Architecture.png?raw=true)
