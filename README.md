@@ -67,6 +67,12 @@ This ChatBot App hadn't been develop by me, just check this repo to find the aut
       </a>
       <br>SonarQube
     </td>
+    <td align="center" width="96">
+      <a href="#macropower-tech">
+        <img src="./img/typescript-original.svg" width="48" height="48" alt="Typescript" />
+      </a>
+      <br>TypeScript
+    </td>
   </tr>
   <tr>
     <td align="center" width="96">
@@ -110,6 +116,12 @@ This ChatBot App hadn't been develop by me, just check this repo to find the aut
         <img src="./img/yaml-original.svg" width="48" height="48" alt="YAML" />
       </a>
       <br>YAML
+    </td>
+    <td align="center" width="96">
+      <a href="#macropower-tech">
+        <img src="./img/nextjs-original.svg" width="48" height="48" alt="Nextjs" />
+      </a>
+      <br>Next.js
     </td>
   </tr>
 </table>
