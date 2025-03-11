@@ -67,6 +67,8 @@ This ChatBot App hadn't been develop by me, just check this repo to find the aut
       </a>
       <br>SonarQube
     </td>
+  </tr>
+  <tr>
     <td align="center" width="96">
       <a href="#macropower-tech" >
         <img src="https://raw.githubusercontent.com/cncf/artwork/master/projects/kubernetes/icon/color/kubernetes-icon-color.svg" width="48" height="48" alt="Kubernetes" />
@@ -102,6 +104,12 @@ This ChatBot App hadn't been develop by me, just check this repo to find the aut
         <img src="./img/trivy.svg" width="48" height="48" alt="Trivy" />
       </a>
       <br>Trivy
+    </td>
+    <td align="center" width="96">
+      <a href="#macropower-tech" >
+        <img src="./img/yaml-original.svg" width="48" height="48" alt="YAML" />
+      </a>
+      <br>YAML
     </td>
   </tr>
 </table>
