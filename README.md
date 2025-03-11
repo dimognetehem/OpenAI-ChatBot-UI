@@ -21,33 +21,51 @@ This ChatBot App hadn't been develop by me, just check this repo to find the aut
 
 ## 🛠️ Technology Stack
 
-> Tools, languages, and other things that I like to work with.
+> Tools, languages, and other things that have been used.
 
 <table>
   <tr>
     <td align="center" width="96">
       <a href="#macropower-tech">
-        <img src="./img/go-flat.svg" width="48" height="48" alt="Golang" />
+        <img src="./img/terraform-original.svg" width="48" height="48" alt="Terraform" />
       </a>
-      <br>Go
+      <br>Terraform
     </td>
     <td align="center" width="96">
       <a href="#macropower-tech">
-        <img src="./img/python-original.svg" width="48" height="48" alt="Python" />
+        <img src="./img/jenkins-original.svg" width="48" height="48" alt="Jenkins" />
       </a>
-      <br>Python
+      <br>Jenkins
     </td>
     <td align="center" width="96">
       <a href="#macropower-tech">
-        <img src="https://jsonnet.org/img/isologo.svg" width="48" height="48" alt="Jsonnet" />
+        <img src="./img/git-original.svg" width="48" height="48" alt="Git" />
       </a>
-      <br>Jsonnet
+      <br>Git
     </td>
     <td align="center" width="96">
       <a href="#macropower-tech">
-        <img src="./img/typescript-original.svg" width="48" height="48" alt="TypeScript" />
+        <img src="./img/aws-original.svg" width="48" height="48" alt="AWS" />
       </a>
-      <br>TypeScript
+      <br>AWS
+    </td>
+    <td align="center" width="96">
+      <a href="#macropower-tech">
+        <img src="./img/dynamodb-original.svg" width="48" height="48" alt="DynamoDB" />
+      </a>
+      <br>DynamoDB
+    </td>
+    <td align="center" width="96">
+      <a href="#macropower-tech">
+        <img src="./img/react-original.svg" width="48" height="48" alt="React" />
+      </a>
+      <br>React
+    </td>
+    <td align="center" width="96">
+      <a href="#macropower-tech">
+        <img src="./img/sonarqube-plain.svg" width="48" height="48" alt="SonarQube" />
+      </a>
+      <br>SonarQube
     </td>
     <td align="center" width="96">
       <a href="#macropower-tech" >
@@ -63,15 +81,27 @@ This ChatBot App hadn't been develop by me, just check this repo to find the aut
     </td>
     <td align="center"  width="96">
       <a href="#macropower-tech">
-        <img src="./img/debian-original.svg" width="48" height="48" alt="Debian" />
+        <img src="./img/ubuntu-original.svg" width="48" height="48" alt="Ubuntu" />
       </a>
-      <br>Debian
+      <br>Ubuntu
     </td>
     <td align="center" width="96">
       <a href="#macropower-tech" >
-        <img src="https://raw.githubusercontent.com/grafana/grafana/master/public/img/grafana_icon.svg" width="48" height="48" alt="Grafana" />
+        <img src="./img/nodejs-original.svg" width="48" height="48" alt="Nodejs" />
       </a>
-      <br>Grafana
+      <br>Node.js
+    </td>
+    <td align="center" width="96">
+      <a href="#macropower-tech" >
+        <img src="./img/vscode-original.svg" width="48" height="48" alt="VSCode" />
+      </a>
+      <br>VSCode
+    </td>
+    <td align="center" width="96">
+      <a href="#macropower-tech" >
+        <img src="./img/trivy.svg" width="48" height="48" alt="Trivy" />
+      </a>
+      <br>Trivy
     </td>
   </tr>
 </table>
